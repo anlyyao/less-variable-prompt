@@ -13,6 +13,17 @@
 		"onLanguage:less"
 	],
 	"main": "./out/extension.js",
+  "license": "MIT",
+    "homepage": "https://github.com/dayao0420/YParanoid/blob/main/README.md",
+    "bugs": {
+        "url": "https://github.com/dayao0420/YParanoid/issues",
+        "email": "anly_yaw@163.com"
+    },
+    "publisher": "anlyyao",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dayao0420/YParanoid.git"
+    },
 	"contributes": {},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

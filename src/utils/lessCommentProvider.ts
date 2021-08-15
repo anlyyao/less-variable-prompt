@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import path = require("path");
 import fs = require("fs");
+import readline = require('readline');
 import { getFoldersPath, getDocumentWorkspaceFolder } from './index';
 
 
@@ -37,20 +38,20 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                     fileList = Array.from(new Set(fileList.concat(arr, arr1)));
 
                     let list: any[] = [];
-                    let reg = /(\r\n\t|\n|\r\t)|(\/\/.*)|(\/\*[\s\S]*?\*\/)/g; // 去文件中的空行、注释等
+                    let reg = /(\/\/.*)|(\/\*[\s\S]*?\*\/)|(\r\n\t|\n|\r\t)/g; // 去文件中的空行、注释等
                     fileList.forEach( path => {
-                        let tmpList = fs
+                        let fileContentList = fs
                             .readFileSync(path, "utf-8")
                             .replace(reg, "")
                             .split(";");
-                        let aftList: { cont: string; path: any; }[] = [];
-                        tmpList.forEach(item => {
-                            aftList.push({
-                                cont: item,
+                        let contentList: { cont: string; path: any; }[] = [];
+                        fileContentList.forEach(item => {
+                            contentList.push({
+                                cont: item.trim(), //去空格
                                 path
                             });
                         });
-                        list = Array.from(new Set(list.concat(aftList)));
+                        list = Array.from(new Set(list.concat(contentList)));
                     });
                     var result: Array<any> = [];
                     list.map( item => {
