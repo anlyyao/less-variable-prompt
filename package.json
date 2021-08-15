@@ -13,6 +13,11 @@
 		"onLanguage:less"
 	],
 	"main": "./out/extension.js",
+  "icon": "images/icon-man.png",
+  "galleryBanner": {
+      "color": "#C80000",
+      "theme": "dark"
+  },
   "license": "MIT",
     "homepage": "https://github.com/dayao0420/YParanoid/blob/main/README.md",
     "bugs": {
