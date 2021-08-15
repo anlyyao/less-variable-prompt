@@ -6,18 +6,18 @@ const getDirectoryFile = (filePath: string) => {
   let fileList: string[] = [];
   const readDirSync = (path: fs.PathLike) => {
     var pa = fs.readdirSync(path);
-    pa.forEach(function(ele, index) {
-      var info = fs.statSync(path + "/" + ele);
+    pa.forEach(function(element, index) {
+      var info = fs.statSync(path + "/" + element);
       // 判断当前是否为目录
       if (info.isDirectory()) {
-        // console.log("dir: " + ele);
+        // console.log("dir: " + element);
         // 如果当前路径为目录，递归
-        readDirSync(path + "/" + ele);
+        readDirSync(path + "/" + element);
       } else {
         // 如果当前已经是子文件，判断后缀是否为 less
-        if (ele.match(/^.+\.less/)) {
-          // console.log("file: " + path + ele);
-          fileList.push(path + "/" + ele);
+        if (element.match(/^.+\.less/)) {
+          // console.log("file: " + path + element);
+          fileList.push(path + "/" + element);
         }
       }
     });
@@ -38,7 +38,7 @@ const getFoldersPath = (config: { folderList: any[]; }, projectPath: string) => 
     });
     return fileList;
   } catch (e) {
-    console.error("读取folderList失败，请检查csscpt.config.json");
+    console.error("读取folderList失败，请检查package.json");
   }
 };
 
