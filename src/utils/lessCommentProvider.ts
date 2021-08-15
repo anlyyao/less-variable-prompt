@@ -5,12 +5,12 @@ import { getFoldersPath, getDocumentWorkspaceFolder } from './index';
 
 
 /**
- *  CompletionItemProvider 可以在用户键入字符之后提供可供选择的 item, 
+ *  CompletionItemProvider 可以在用户键入字符之后提供可供选择的 item,
  *  用这个方法获取字符并匹配需要触发的点
  */
 class LessCommentProvider implements vscode.CompletionItemProvider{
     public provideCompletionItems(
-        document: vscode.TextDocument, 
+        document: vscode.TextDocument,
         position: vscode.Position
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList<vscode.CompletionItem>> {
         // lineAt(position: Position): TextLine; 根据一个位置返回这一行的行对象
@@ -22,7 +22,7 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
         // 只截取到光标位置为止，防止一些特殊情况
         const lineText = line.text.substring(0, position.character);
         if((/[\@]+$/g).test(lineText)){ // 判断光标的前一个字符是否为‘@’, true 则添加代码提示
-        // if(lineText.slice(-1) === '@') { 
+        // if(lineText.slice(-1) === '@') {
             try {
                 // 获取csscpt.config.json中的相关配置
                 let config = JSON.parse(
@@ -41,7 +41,7 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                     fileList.forEach( path => {
                         let tmpList = fs
                             .readFileSync(path, "utf-8")
-                            .replace(reg, "") 
+                            .replace(reg, "")
                             .split(";");
                         let aftList: { cont: string; path: any; }[] = [];
                         tmpList.forEach(item => {
@@ -72,7 +72,7 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                     console.log(err);
                 }
             } catch(e) {
-                console.error("csscpt.config.json文件读取失败",e);
+                console.error("package.json文件读取失败",e);
             }
         }
     };
