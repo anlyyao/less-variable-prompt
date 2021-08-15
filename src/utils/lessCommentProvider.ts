@@ -44,10 +44,13 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                             .readFileSync(path, "utf-8")
                             .replace(reg, "")
                             .split(";");
-                        let contentList: { cont: string; path: any; }[] = [];
+                        let contentList: {
+                            content: string;
+                            path: any;
+                        }[] = [];
                         fileContentList.forEach(item => {
                             contentList.push({
-                                cont: item.trim(), //去空格
+                                content: item.trim(), //去空格
                                 path
                             });
                         });
@@ -55,8 +58,8 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                     });
                     var result: Array<any> = [];
                     list.map( item => {
-                        let arr = item.cont.split(":");
-                        let key = arr[0], value = arr[1];
+                        let arrContent = item.content.split(":");
+                        let key = arrContent[0], value = arrContent[1];
                         let completionItems = new vscode.CompletionItem(
                             key,
                             vscode.CompletionItemKind.Variable  // vscode.CompletionItemKind 表示提示的类型
