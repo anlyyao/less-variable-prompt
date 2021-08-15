@@ -30,16 +30,15 @@ class LessCommentProvider implements vscode.CompletionItemProvider{
                     fs.readFileSync(path.join(projectPath, "package.json"), "utf-8")
                 ).lessProvider;
                 try {
-                    let fileList: any[] = [], arr: any =[], arr1: any =[];;
+                    let fileListPath: any[] = [], arr: any =[], arr1: any =[];;
                     // folder
                     if (config.folderList) {
                         arr = getFoldersPath(config, projectPath);
                     }
-                    fileList = Array.from(new Set(fileList.concat(arr, arr1)));
-
+                    fileListPath = Array.from(new Set(fileListPath.concat(arr, arr1)));
                     let list: any[] = [];
                     let reg = /(\/\/.*)|(\/\*[\s\S]*?\*\/)|(\r\n\t|\n|\r\t)/g; // 去文件中的空行、注释等
-                    fileList.forEach( path => {
+                    fileListPath.forEach( path => {
                         let fileContentList = fs
                             .readFileSync(path, "utf-8")
                             .replace(reg, "")
