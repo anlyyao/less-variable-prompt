@@ -21,15 +21,23 @@ class HoverProvider implements vscode.HoverProvider{
       // todo: 根据光标关键词
       const filePathList = getFilePath(fileName, workDir);
       const list = getFilePathContent(filePathList);
-      let result: string[] = [];
+      let result: any[] = [];
       // todo: 如果存在多个变量同命名？？
       // 那么就会得到多个变量定义内容,此种情况下，默认hover第一个定义
       list.filter( item => {
         return item.key === word;
       }).forEach( item => {
-        result.push(item.value);
+        result.push(
+          {
+            value: item.value,
+            path: item.path
+          }
+        );
       });
-      return new vscode.Hover(result[0]);
+      // hover内容支持markdown语法
+      return new vscode.Hover(
+        `* **变量值**：${result[0].value}\n* **变量来源**：${result[0].path}`
+      );
   }
 }
 
