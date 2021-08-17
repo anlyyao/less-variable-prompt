@@ -18,7 +18,7 @@
 		"color": "#C80000",
 		"theme": "dark"
 	},
-	"license": "MIT",
+	"license": "SEE LICENSE IN LICENSE.txt",
 	"homepage": "https://github.com/dayao0420/less-prompt/blob/main/README.md",
 	"bugs": {
 		"url": "https://github.com/dayao0420/less-prompt/issues",
@@ -37,7 +37,9 @@
 		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
-		"build": "vsce package"
+		"package": "vsce package",
+    "publish": "vsce publish",
+    "update:publish": "vsce publish minor"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",

@@ -1,5 +1,5 @@
 ## less变量智能提示、hover、跳转定义插件
-
+![Version](https://img.shields.io/badge/version-0.0.1-black.svg)
 ### 使用方法
 
 #### 1 安装插件
