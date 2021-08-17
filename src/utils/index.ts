@@ -3,7 +3,7 @@ import path = require("path");
 import fs = require("fs");
 
 const getFilePath = (fileName: string, workDir: string) => {
-  let filePathList: string[] = [];
+  let filePathList = [];
   // 读取当前less文件，分析@import导入情况
   filePathList.push(fileName);
   function getFileSrc(fileName: string, workDir: string){
@@ -27,6 +27,7 @@ const getFilePath = (fileName: string, workDir: string) => {
     }
   }
   getFileSrc( fileName, workDir);
+  filePathList = Array.from(new Set(filePathList));
   return filePathList;
 };
 
@@ -60,7 +61,6 @@ const getFilePathContent = (fileListPath: string[]) => {
     const reg = /^@/;
     return reg.exec(item.key);
   });
-  console.log(result);
   return Array.from(new Set(result));
 };
 
