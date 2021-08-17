@@ -1,7 +1,7 @@
 {
-	"name": "yparanoid",
-	"displayName": "YParanoid",
-	"description": "a code hinting by anly",
+	"name": "less-prompt",
+	"displayName": "less-prompt",
+	"description": "less-prompt plugin",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.59.0"
@@ -19,15 +19,15 @@
 		"theme": "dark"
 	},
 	"license": "MIT",
-	"homepage": "https://github.com/dayao0420/YParanoid/blob/main/README.md",
+	"homepage": "https://github.com/dayao0420/less-prompt/blob/main/README.md",
 	"bugs": {
-		"url": "https://github.com/dayao0420/YParanoid/issues",
+		"url": "https://github.com/dayao0420/less-prompt/issues",
 		"email": "anly_yaw@163.com"
 	},
 	"publisher": "anlyyao",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dayao0420/YParanoid.git"
+		"url": "https://github.com/dayao0420/less-prompt.git"
 	},
 	"contributes": {},
 	"scripts": {
