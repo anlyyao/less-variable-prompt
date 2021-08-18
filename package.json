@@ -1,7 +1,7 @@
 {
 	"name": "less-prompt",
-	"displayName": "less prompt",
-	"description": "less prompt plugin",
+	"displayName": "Less Variable Prompt",
+	"description": "('粗暴版') => {'引入外部less文件的变量提示帮助(变量补全提示、悬停提示、跳转定义行'}",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.59.0"
