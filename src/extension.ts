@@ -19,17 +19,17 @@ function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 
     // 注册 跳转到定义
-    const goDefinitionProvider = new DefinitionProvider();
+    const linkDefinitionProvider = new DefinitionProvider();
     context.subscriptions.push(vscode.languages.registerDefinitionProvider(
       'less',
-      goDefinitionProvider
+      linkDefinitionProvider
     ));
 
     // 注册 hover
-    const goHoverProvider = new HoverProvider();
+    const showHoverProvider = new HoverProvider();
     context.subscriptions.push(vscode.languages.registerHoverProvider(
       'less',
-      goHoverProvider
+      showHoverProvider
     ));
 };
 
