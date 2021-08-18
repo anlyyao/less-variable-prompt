@@ -3,13 +3,14 @@ import path = require("path");
 import fs = require("fs");
 
 const getFilePath = (fileName: string, workDir: string) => {
-  let filePathList = [];
+  let filePathList: string[] = [];
+  // filePathList.push(fileName);
   // 读取当前less文件，分析@import导入情况
-  filePathList.push(fileName);
   function getFileSrc(fileName: string, workDir: string){
     const regImport = /@import.*/g; // 匹配@import
     const regQuote = /('|")(.*?)\1/g; // 匹配单引号双引号中间的内容
     const regAnnotation = /(\/\/.*)|(\/\*[\s\S]*?\*\/)/g; // 去注释
+    filePathList.push(fileName);
     const lessContent = fs.readFileSync(fileName, 'utf-8').replace(regAnnotation, '');
     // 判断当前是否有 @import
     if(lessContent && new RegExp('@import').test(lessContent)){
@@ -18,7 +19,6 @@ const getFilePath = (fileName: string, workDir: string) => {
         const listItem: string[] | null = item.match(regQuote);
         const srcRelative = listItem? listItem[0].substring(1, listItem[0].length - 1): '';
         const srcAbsolute = path.join(workDir, srcRelative);
-        filePathList.push(srcAbsolute);
         // todo: 判断每一个@import文件中是否还包含 import语句，如果有，递归寻找，直到子文件中不再有@import文件
         // 注意这里workDir已经发生改变，为srcAbsolute路径去掉文件名称
         const temp =srcAbsolute.substring(0, srcAbsolute.lastIndexOf('/'));
@@ -33,7 +33,7 @@ const getFilePath = (fileName: string, workDir: string) => {
 
 const getFilePathContent = (fileListPath: string[]) => {
   let list: any[] = [];
-  let reg = /(@import.*)|(\/\/.*)|(\/\*[\s\S]*?\*\/)|(\r\n\t|\n|\r\t)/g; // 去文件中的空行、注释、import等
+  let reg = /(\/\*[\s\S]*?\*\/)|(\{[^\}]+\})|(@import.*)|(\/\/.*)|(\r\n\t|\n|\r\t)/g; // 去文件中的import、注释、{}、.开头的、空行等
   fileListPath.forEach( path => {
     let fileContentList = fs
         .readFileSync(path, "utf-8")

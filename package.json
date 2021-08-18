@@ -1,7 +1,7 @@
 {
 	"name": "less-prompt",
-	"displayName": "less-prompt",
-	"description": "less-prompt plugin",
+	"displayName": "less prompt",
+	"description": "less prompt plugin",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.59.0"
@@ -13,7 +13,7 @@
 		"onLanguage:less"
 	],
 	"main": "./out/extension.js",
-	"icon": "images/icon-man.png",
+	"icon": "icon/logo.png",
 	"galleryBanner": {
 		"color": "#C80000",
 		"theme": "dark"
