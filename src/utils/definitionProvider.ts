@@ -47,6 +47,11 @@ import path = require('path');
   };
 }
 
-export {
-  DefinitionProvider
+module.exports = function (context: vscode.ExtensionContext) {
+  // 注册 跳转到定义
+  const linkDefinitionProvider = new DefinitionProvider();
+  context.subscriptions.push(vscode.languages.registerDefinitionProvider(
+    'less',
+    linkDefinitionProvider
+  ));
 };

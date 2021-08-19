@@ -1,7 +1,7 @@
 {
 	"name": "less-prompt",
 	"displayName": "Less Variable Prompt",
-	"description": "('粗暴版') => {'引入外部less文件的变量提示帮助(变量补全提示、悬停提示、跳转定义行'}",
+	"description": "(安装即用，无需配置)-less变量的智能提示(变量提示、悬停提示、跳转定义行",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.59.0"
@@ -19,15 +19,15 @@
 		"theme": "dark"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
-	"homepage": "https://github.com/dayao0420/less-prompt/blob/main/README.md",
+	"homepage": "https://github.com/dayao0420/less-variable-prompt/blob/main/README.md",
 	"bugs": {
-		"url": "https://github.com/dayao0420/less-prompt/issues",
+		"url": "https://github.com/dayao0420/less-variable-prompt/issues",
 		"email": "anly_yaw@163.com"
 	},
 	"publisher": "anlyyao",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dayao0420/less-prompt.git"
+		"url": "https://github.com/dayao0420/less-variable-prompt.git"
 	},
 	"contributes": {},
 	"scripts": {

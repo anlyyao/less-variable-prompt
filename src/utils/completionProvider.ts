@@ -39,6 +39,13 @@ class CompletionProvider implements vscode.CompletionItemProvider{
     }
 }
 
-export {
-  CompletionProvider
+module.exports = function (context: vscode.ExtensionContext) {
+  // 注册： less变量提示
+  const completionProvider = new CompletionProvider();
+  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(
+    'less',
+    completionProvider,
+    '@' // 这里穿传入 @ 是 tigger 选项, 为了精确配置触发条件
+  ));
 };
+

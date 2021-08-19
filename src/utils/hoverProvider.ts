@@ -41,6 +41,11 @@ class HoverProvider implements vscode.HoverProvider{
   }
 }
 
-export {
-  HoverProvider
+module.exports = function (context: vscode.ExtensionContext) {
+  // 注册鼠标悬停提示
+  const showHoverProvider = new HoverProvider();
+  context.subscriptions.push(vscode.languages.registerHoverProvider(
+    'less',
+    showHoverProvider
+  ));
 };
