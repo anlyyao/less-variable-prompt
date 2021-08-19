@@ -1,5 +1,5 @@
 {
-	"name": "less-prompt",
+	"name": "less-variable-prompt",
 	"displayName": "Less Variable Prompt",
 	"description": "(安装即用，无需配置)-less变量的智能提示(变量提示、悬停提示、跳转定义行",
 	"version": "0.0.1",
